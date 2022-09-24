@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Satisfy&display=swap'); 
+
+*{
+    font-family: 'Lexend', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #edecec;
+}
+.container{
+    max-width: 1440px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 66px;
+    margin: auto;
+    padding: 10px;
+}
+.card{
+    position: relative;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    box-shadow: rgb(0 0 0 / 25%) 0 0 30px;
+}
+.card::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background-size: cover;
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.card:first-child::before{
+    background-image: url(../img/image1.jpg);
+}
+.card:nth-child(2)::before{
+    background-image: url(../img/image2.jpg);
+}
+.card:nth-child(3)::before{
+    background-image: url(../img/image3.jpg);
+}
+.card:last-child::before{
+    background-image: url(../img/image4.jpg);
+}
+.card:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.content{
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    z-index: 1;
+    transform: translateY(calc(100% - 45px));
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.content >*:not(.title){
+    transform: translateY(10px);
+    opacity: 0;
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1) , opacity 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+}
+.text{
+    font-family: 'Satisfy', cursive;
+    font-size: 18px;
+    line-height: 30px;
+}
+.btn{
+    cursor: pointer;
+    margin-top: 25px;
+    padding: 10px 25px;
+    font-size: 13px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: none;
+    color: white;
+    background-color: #11998E;
+}
+
+/* hover */
+
+.card:hover .content , .card:focus-within .content{
+    transform: translateY(0);
+}
+.card:hover::after , .card:focus-within:after{
+    transform: translateY(-50%);
+}
+.card:hover , .card:focus-within{
+    align-items: center;
+}
+
+.card:hover::before , .card:focus-within:before{
+    transform: translateY(-5%);
+}
+.card:hover .content >*:not(.title), .card:focus-within  .content >*:not(.title){
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 100ms;
+}
